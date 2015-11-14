@@ -14,14 +14,9 @@ var Place = require("../models/place.js");
  */
 router.get('/', function(req, res) {
 
-  var jsonData = {
-  	'name': 'Spot',
-  	'api-status':'OK'
-  }
-
-  // respond with json data
-  res.json(jsonData)
-});
+  res.render('map.html')
+  
+})
 
 router.get('/add-person', function(req,res){
 
