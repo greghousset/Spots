@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Spots: Favorite Places by Favorite People</title>
+
+    <!-- Custom Font - Change 'Muli' to the font you want -->
+    <link href='https://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'>
+
+    <!-- MapBox -->
+    <script src='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.css' rel='stylesheet'/>
+
+    <!-- Custom CSS inside CSS folder -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Overlay CSS inside CSS folder -->
+    <link rel="stylesheet" href="css/overlay.css">
+
+    <script src="js/modernizr.custom.js"></script>
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    <div class="container">
+        <div id="leftMenu">
+          <div id="logoContainer">
+            <img src="img/logo.png">
+            <h2>Spots</h2>
+          </div>
+          <div id="addButton">
+            <h2>
+              Add Place
+            </h2>
+          </div>
+          <div id="filters">
+            <h2>Display Options</h2>
+
+            <div class="dividerLight"></div>
+            <div class="dividerDark"></div>
+
+            <div id="barCheckbox">
+              <h3>Bars</h3>
+              <input type='checkbox' name='barCheck' value="" id="barcheck" checked>
+              <label for="barcheck" id="barlabel"></label>
+              <img src="img/pininactive.png">
+            </div>
+
+            <div class="dividerLight"></div>
+            <div class="dividerDark"></div>
+
+            <div id="restaurantCheckbox">
+              <h3>Restaurants</h3>
+              <input type='checkbox' name="restaurantcheck" value="" id="restaurantcheck" checked>
+              <label for="restaurantcheck"></label>
+              <img src="img/pininactive.png">
+            </div>
+
+            <div class="dividerLight"></div>
+            <div class="dividerDark"></div>
+
+
+            <div id="shopCheckbox">
+              <h3>Other</h3>
+              <input type='checkbox' name="shopcheck" value="" id="shopcheck" checked>
+              <label for="shopcheck"></label>
+              <img src="img/pininactive.png">
+            </div>
+
+            <div class="dividerLight"></div>
+            <div class="dividerDark"></div>
+
+          </div>
+
+          <div id="sliderContainer">
+            <img id="peepIcon" src="img/peep.png">
+            <input type="range" name="social" min="0" max="1">
+            <img id="peepsIcon" src="img/peeps.png">
+          </div>
+
+        </div>
+        <div id="mapContainer">
+          <div id="map"></div>
+        </div>
+
+    </div><!-- end of container -->
+
+    <!-- open/close -->
+    <div class="overlay overlay-search">
+      <div id="overlayContainer">
+        <button type="button" class="overlay-close">Close</button>
+        <input type="text" placeholder="Find a location">
+        <div id="scrollListings">
+          <ul>
+          <li><a href="#">
+            <div class="searchListing">
+              <div class="imageAndPin">
+                <img class="venueImage" src="https://scontent.cdninstagram.com/hphotos-xaf1/t51.2885-15/s320x320/e15/11374720_1440024772982254_1392175146_n.jpg">
+                <div class="pinContainer">
+                <img src="img/barpinmed.png">
+                </div>
+              </div>
+
+              <div class="listingContent">
+                <h2>Sal and Carmine's</h2>
+                <p>Pizza Place</p>
+                <p>2671 Broadway, New York, NY 10025</p>
+              </div>
+            </div>
+          </a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </body>
+
+    <!-- JQuery script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <script src="js/classie.js"></script>
+
+    <!-- CUSTOM JS -->
+    <script src="js/main.js"></script>
+
+</html>

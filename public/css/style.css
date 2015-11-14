@@ -1,0 +1,453 @@
+/**************/
+/* Custom CSS */
+/**************/
+
+@font-face {
+	font-family: OpenReg;
+		src: url('../fonts/opensans-regular-webfont.ttf'),
+ 			url('fonts/opensans-regular-webfont.eot');
+		}
+
+@font-face {
+	font-family: OpenLightIt;
+		src: url('../fonts/opensans-lightitalic-webfont.ttf'),
+ 			url('fonts/opensans-lightitalic-webfont.eot');
+		}
+
+@font-face {
+	font-family: OpenReg;
+		src: url('../fonts/opensans-regular-webfont.ttf'),
+ 			url('fonts/opensans-regular-webfont.eot');
+		}
+
+@font-face {
+	font-family: OpenLight;
+		src: url('../fonts/opensans-light-webfont.ttf'),
+ 			url('fonts/opensans-light-webfont.eot');
+		}
+
+* {padding: 0; margin: 0;}
+
+
+html {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	font-size: 62.5%;
+	height: 100%;
+	width: 100%;
+}
+
+.container {
+	width: 100%;
+	height: 100%;
+}
+
+#leftMenu {
+	width: 350px;
+	height: 100%;
+	float: left;
+	z-index: 10;
+	position: relative;
+	box-shadow: 3px 0px 5px rgba(70,70,70,0.60);
+	-webkit-box-sizing:border-box; 
+	-moz-box-sizing:border-box; 
+	box-sizing:border-box;
+
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+1,eaeaea+100,7db9e8+100 */
+	background: #ffffff; /* Old browsers */
+	background: -moz-linear-gradient(-45deg, #ffffff 1%, #eaeaea 100%, #7db9e8 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right bottom, color-stop(1%,#ffffff), color-stop(100%,#eaeaea), color-stop(100%,#7db9e8)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(-45deg, #ffffff 1%,#eaeaea 100%,#7db9e8 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(-45deg, #ffffff 1%,#eaeaea 100%,#7db9e8 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(-45deg, #ffffff 1%,#eaeaea 100%,#7db9e8 100%); /* IE10+ */
+	background: linear-gradient(135deg, #ffffff 1%,#eaeaea 100%,#7db9e8 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#7db9e8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+#mapContainer {
+	height: 100%;
+	float: left;
+	overflow: hidden;
+	z-index: 3;
+	position: relative;
+
+}
+
+
+#map { 
+	position:absolute; 
+	top:0; 
+	bottom:0; 
+	width:100%; 
+}
+
+#logoContainer img {
+	margin-top: 25px;
+	margin-left: 35px;
+	margin-bottom: 60px;
+	height: 50px;
+	width: 50px;
+}
+
+#logoContainer h2 {
+	font-family: OpenReg;
+	font-size: 3em;
+	position: absolute;
+	color: #333333;
+	letter-spacing: 1px;
+	top: 28px;
+	left: 100px;
+}
+
+#addButton {
+	width: 280px;
+	height: 45px;
+	border-radius: 2px;
+	background-color: #049372;
+	opacity: .8;	
+	margin: 30px auto 50px auto;
+	padding-top: 11px;
+	box-shadow: 0px 1px 2px rgba(70,70,70,0.80);
+	-webkit-box-sizing:border-box; 
+	-moz-box-sizing:border-box; 
+	box-sizing:border-box;
+}
+
+#addButton h2 {
+	font-size: 1.6em;
+	color: white;
+	font-family: OpenReg;
+	text-align: center;
+	letter-spacing: .3px;
+}
+
+#filters{
+	position: relative;
+}
+
+ .dividerLight {
+	width: 100%;
+	height: 1px;
+	background-color: #F7F7F7;
+/*	box-shadow: 0px 1px 2px rgba(70,70,70,0.80);
+*/	-webkit-box-sizing:border-box; 
+	-moz-box-sizing:border-box; 
+	box-sizing:border-box;
+	margin: 6px auto 0px auto;
+}
+
+.dividerDark {
+	width: 100%;
+	height: 1px;
+	background-color: #DEDEDE;
+/*	box-shadow: 0px 1px 2px rgba(70,70,70,0.80);
+*/	-webkit-box-sizing:border-box; 
+	-moz-box-sizing:border-box; 
+	box-sizing:border-box;
+	margin: 0 auto;
+}
+
+input[type=checkbox] {
+	display:none;
+}
+ 
+ #barCheckbox input[type=checkbox] + label {
+	background: url("http://s24.postimg.org/qxzx7jgvl/barpin.png") no-repeat;
+	background-size: 100%;
+	height: 43px;
+	width: 30px;
+	display:inline-block;
+	opacity: 0;
+	transition: opacity .25s ease-in-out;
+   -moz-transition: opacity .25s ease-in-out;
+   -webkit-transition: opacity .25s ease-in-out;
+   position: absolute;
+   top: 40px;
+   right:40px;
+   z-index: 3;
+   cursor: pointer;
+}
+
+#restaurantCheckbox input[type=checkbox] + label {
+	background: url("http://s28.postimg.org/tce43lma1/restpin.png") no-repeat;
+	background-size: 100%;
+	height: 43px;
+	width: 30px;
+	display:inline-block;
+	opacity: 0;
+	transition: opacity .25s ease-in-out;
+   -moz-transition: opacity .25s ease-in-out;
+   -webkit-transition: opacity .25s ease-in-out;
+   position: absolute;
+   top: 120px;
+   right:40px;
+   z-index: 3;
+   cursor: pointer;
+}
+
+#shopCheckbox input[type=checkbox] + label {
+	background: url("http://s18.postimg.org/6hw9hf1o5/shoppin.png") no-repeat;
+	background-size: 100%;
+	height: 43px;
+	width: 30px;
+	display:inline-block;
+	opacity: 0;
+	transition: opacity .25s ease-in-out;
+   -moz-transition: opacity .25s ease-in-out;
+   -webkit-transition: opacity .25s ease-in-out;
+   position: absolute;
+   top: 200px;
+   right:40px;
+   z-index: 3;
+   cursor: pointer;
+}
+
+#barCheckbox img {
+	position: absolute;
+	top: 40px;
+	right: 40px;
+	z-index: 1;
+}
+
+#restaurantCheckbox img {
+	position: absolute;
+	top: 120px;
+	right: 40px;
+	z-index: 1;
+}
+
+#shopCheckbox img {
+	position: absolute;
+	top: 200px;
+	right: 40px;
+	z-index: 1;
+}
+
+#filters h2 {
+	font-family: OpenLight;
+	color: #999;
+	text-transform: uppercase;
+	letter-spacing: 3.5px;
+	margin-left: 37px;
+	font-size: 1.2em;
+}
+
+#filters h3 {
+	font-family: OpenLight;
+	color: #333;
+	margin-left: 45px;
+	margin-bottom: 25px;
+	font-size: 2em;
+	margin-top: 25px; 
+}
+
+#barCheckbox input[type=checkbox]:checked + label {
+	background: url("http://s24.postimg.org/qxzx7jgvl/barpin.png") no-repeat;
+	background-size: 100%;
+	height: 43px;
+	width: 30px;
+	display:inline-block;
+	opacity: 1;
+   transition: opacity .25s ease-in-out;
+   -moz-transition: opacity .25s ease-in-out;
+   -webkit-transition: opacity .25s ease-in-out;
+   z-index: 3;
+   cursor: pointer;
+
+}
+
+#restaurantCheckbox input[type=checkbox]:checked + label {
+	background: url("http://s28.postimg.org/tce43lma1/restpin.png") no-repeat;
+	background-size: 100%;
+	height: 43px;
+	width: 30px;
+	display:inline-block;
+	opacity: 1;
+   transition: opacity .25s ease-in-out;
+   -moz-transition: opacity .25s ease-in-out;
+   -webkit-transition: opacity .25s ease-in-out;
+   z-index: 3;
+   cursor: pointer;
+
+}
+
+#shopCheckbox input[type=checkbox]:checked + label {
+	background: url("http://s18.postimg.org/6hw9hf1o5/shoppin.png") no-repeat;
+	background-size: 100%;
+	height: 43px;
+	width: 30px;
+	display:inline-block;
+	opacity: 1;
+   transition: opacity .25s ease-in-out;
+   -moz-transition: opacity .25s ease-in-out;
+   -webkit-transition: opacity .25s ease-in-out;
+   z-index: 3;
+   cursor: pointer;
+
+}
+
+#sliderContainer {
+	position: absolute;
+	bottom: 50px;
+	left: 85px;
+}
+
+#peepIcon {
+	position: absolute;
+	bottom: -6px;
+	left:-40px;
+}
+
+#peepsIcon {
+	position: absolute;
+	bottom: -6px;
+	left: 168px;
+}
+
+input[type=range] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 150px; /* Specific width is required for Firefox. */
+}
+
+input[type=range]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+}
+
+input[type=range]:focus {
+	outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type=range]::-ms-track {
+	width: 150px;
+	cursor: pointer;
+	background: transparent; /* Hides the slider so custom styles can be added */
+	border-color: transparent;
+	color: transparent;
+}
+
+/* Special styling for WebKit/Blink */
+input[type=range]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	border: 4px solid #fff;
+	box-shadow: 0px 0px 2px rgba(70,70,70,1);
+	height: 40px;
+	width: 40px;
+	border-radius: 20px;
+	cursor: pointer;
+	margin-top: -16px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+	margin-left: 0px;
+
+	background-image: 
+	-webkit-radial-gradient(  50%   0%,  8% 50%, hsla(0,0%,100%,.5) 0%, hsla(0,0%,100%,0) 100%),
+    -webkit-radial-gradient(  50% 100%, 12% 50%, hsla(0,0%,100%,.6) 0%, hsla(0,0%,100%,0) 100%),
+    -webkit-radial-gradient(   0%  50%, 50%  7%, hsla(0,0%,100%,.5) 0%, hsla(0,0%,100%,0) 100%),
+    -webkit-radial-gradient( 100%  50%, 50%  5%, hsla(0,0%,100%,.5) 0%, hsla(0,0%,100%,0) 100%),
+    
+    -webkit-repeating-radial-gradient( 50% 50%, 100% 100%, hsla(0,0%,  0%,0) 0%, hsla(0,0%,  0%,0)   3%, hsla(0,0%,  0%,.1) 3.5%),
+    -webkit-repeating-radial-gradient( 50% 50%, 100% 100%, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0)   6%, hsla(0,0%,100%,.1) 7.5%),
+    -webkit-repeating-radial-gradient( 50% 50%, 100% 100%, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0) 1.2%, hsla(0,0%,100%,.2) 2.2%),
+    
+    -webkit-radial-gradient( 50% 50%, 200% 50%, hsla(0,0%,90%,1) 5%, hsla(0,0%,85%,1) 30%, hsla(0,0%,60%,1) 100%);
+}
+
+/* All the same stuff for Firefox */
+input[type=range]::-moz-range-thumb {
+	border: 4px solid #fff;
+	box-shadow: 0px 0px 2px rgba(70,70,70,1);
+	height: 40px;
+	width: 40px;
+	border-radius: 20px;
+	cursor: pointer;
+
+	background-image: 
+	-webkit-radial-gradient(  50%   0%,  8% 50%, hsla(0,0%,100%,.5) 0%, hsla(0,0%,100%,0) 100%),
+    -webkit-radial-gradient(  50% 100%, 12% 50%, hsla(0,0%,100%,.6) 0%, hsla(0,0%,100%,0) 100%),
+    -webkit-radial-gradient(   0%  50%, 50%  7%, hsla(0,0%,100%,.5) 0%, hsla(0,0%,100%,0) 100%),
+    -webkit-radial-gradient( 100%  50%, 50%  5%, hsla(0,0%,100%,.5) 0%, hsla(0,0%,100%,0) 100%),
+    
+    -webkit-repeating-radial-gradient( 50% 50%, 100% 100%, hsla(0,0%,  0%,0) 0%, hsla(0,0%,  0%,0)   3%, hsla(0,0%,  0%,.1) 3.5%),
+    -webkit-repeating-radial-gradient( 50% 50%, 100% 100%, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0)   6%, hsla(0,0%,100%,.1) 7.5%),
+    -webkit-repeating-radial-gradient( 50% 50%, 100% 100%, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0) 1.2%, hsla(0,0%,100%,.2) 2.2%),
+    
+    -webkit-radial-gradient( 50% 50%, 200% 50%, hsla(0,0%,90%,1) 5%, hsla(0,0%,85%,1) 30%, hsla(0,0%,60%,1) 100%);
+}
+
+/* All the same stuff for IE */
+input[type=range]::-ms-thumb {
+	border: 4px solid #fff;
+	box-shadow: 0px 0px 2px rgba(70,70,70,1);
+	height: 40px;
+	width: 40px;
+	border-radius: 20px;
+	cursor: pointer;
+
+	background-image: 
+	-webkit-radial-gradient(  50%   0%,  8% 50%, hsla(0,0%,100%,.5) 0%, hsla(0,0%,100%,0) 100%),
+    -webkit-radial-gradient(  50% 100%, 12% 50%, hsla(0,0%,100%,.6) 0%, hsla(0,0%,100%,0) 100%),
+    -webkit-radial-gradient(   0%  50%, 50%  7%, hsla(0,0%,100%,.5) 0%, hsla(0,0%,100%,0) 100%),
+    -webkit-radial-gradient( 100%  50%, 50%  5%, hsla(0,0%,100%,.5) 0%, hsla(0,0%,100%,0) 100%),
+    
+    -webkit-repeating-radial-gradient( 50% 50%, 100% 100%, hsla(0,0%,  0%,0) 0%, hsla(0,0%,  0%,0)   3%, hsla(0,0%,  0%,.1) 3.5%),
+    -webkit-repeating-radial-gradient( 50% 50%, 100% 100%, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0)   6%, hsla(0,0%,100%,.1) 7.5%),
+    -webkit-repeating-radial-gradient( 50% 50%, 100% 100%, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0) 1.2%, hsla(0,0%,100%,.2) 2.2%),
+    
+    -webkit-radial-gradient( 50% 50%, 200% 50%, hsla(0,0%,90%,1) 5%, hsla(0,0%,85%,1) 30%, hsla(0,0%,60%,1) 100%);
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+  box-shadow: inset 0px 0px 3px rgba(30,30,30,.9);
+  background: #fff;
+  border-radius: 6px;
+  border: 0.2px solid #010101;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  box-shadow: inset 0px 0px 3px rgba(30,30,30,.9);
+  background: #fff;
+}
+
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+  box-shadow: inset 0px 0px 3px rgba(30,30,30,.9);
+  background: #fff;
+  border-radius: 6px;
+  border: 0.2px solid #010101;
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 8.6px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  box-shadow: inset 0px 0px 3px rgba(30,30,30,.9);
+  background: #fff;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+}
+input[type=range]:focus::-ms-fill-lower {
+  box-shadow: inset 0px 0px 3px rgba(30,30,30,.9);
+  background: #fff;
+}
+input[type=range]::-ms-fill-upper {
+  box-shadow: inset 0px 0px 3px rgba(30,30,30,.9);
+  background: #fff;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+}
+input[type=range]:focus::-ms-fill-upper {
+  box-shadow: inset 0px 0px 3px rgba(30,30,30,.9);
+  background: #fff;
+}
