@@ -2,127 +2,115 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 
-// our db models
-var Person = require("../models/person.js");
-var Place = require("../models/place.js");
+var clientID = process.env.FS_CLIENT;
+var clientSecret = process.env.FS_SECRET;
 
-/**
- * GET '/'
- * Default home route. Just relays a success message back.
- * @param  {Object} req
- * @return {Object} json
- */
+var foursquare = (require('foursquarevenues'))(clientID, clientSecret);
+
+
+// our db models
+var User = require("../models/user.js");
+var Pin = require("../models/pin.js");
+
+
 router.get('/', function(req, res) {
 
   res.render('map.html')
-  
-})
-
-router.get('/add-person', function(req,res){
-
-  res.render('add-person.html')
 
 })
 
-router.get('/add-place', function(req,res){
+router.get('/api/get/foursquare/search/:lat/:long/:query', function(req,res){
 
-  res.render('add-place.html')
+    var browserLat = req.params.lat;
+    var browserLong = req.params.long;
 
-})
+    var params = {
+        "ll": ""+browserLat+","+browserLong+"",
+        "query": ""+req.params.query+"",
+        "limit":"15"
+    };
 
-router.get('/people', function(req,res){
-
-  res.render('people.html')
-
-})
-
-
-router.post('/api/create/place', function(req,res){
-
-  //console.log('!!!!!GOT HERE!!!!!!')
-  console.log(req.body);
-
-  var placeObj = {
-
-    //for arrays
-    //interests: req.body.interests.split(','),
-    userId: req.body.userId,
-    name: req.body.name,
-    latitude: req.body.latitude,
-    longitude: req.body.longitude,
-    locationType: req.body.locationType,
-    price: req.body.price,
-    neighborhood: req.body.neighborhood,
-    cuisine: req.body.cuisine,
-    vibe: req.body.vibe,
-    image: req.body.image,
-    food: req.body.food,
-    url: req.body.url
-    //dateAdded : { type: Date, default: Date.now }
-  }
-
-  var place = new Place(placeObj);
-
-  place.save(function(err,data){
-    if(err){
-      var error = {
-        status: "ERROR",
-        message: err
-      }
-      return res.json(err)
-    }
-
-    var jsonData = {
-      status: "OK",
-      person: data
-    }
-
-    return res.json(jsonData);
-
-  })
+    foursquare.getVenues(params, function(error, venues) {
+        if (!error) {
+          res.json(venues);
+        }
+    });
 
 })
 
-router.post('/api/create/person', function(req,res){
+router.get('/api/get/foursquare/venue/:venue_id', function(req,res){
 
-  //console.log('!!!!!GOT HERE!!!!!!')
-  console.log(req.body);
+    var venueId = req.params.venue_id;
 
-  var personObj = {
-    name: req.body.name,
-    phoneNumber: req.body.phoneNumber,
-    slug : req.body.name.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-'),
-    imageUrl: req.body.imageUrl
-    //dateAdded : { type: Date, default: Date.now }
-  }
+    var params = {
+        "venue_id": ""+venueId+""
+    };
 
-  var person = new Person(personObj);
-
-  person.save(function(err,data){
-    if(err){
-      var error = {
-        status: "ERROR",
-        message: err
-      }
-      return res.json(err)
-    }
-
-    var jsonData = {
-      status: "User Saved",
-      person: data
-    }
-
-    console.log(jsonData);
-    res.redirect('/people');
-
-  })
+    foursquare.getVenue(params, function(error, venues) {
+        if (!error) {
+          res.json(venues);
+        }
+    });
 
 })
 
+router.post('/api/post/savepin', function(req,res){
 
-router.get('/api/get/places', function(req,res){
+    console.log('the data we received is --> ')
+    console.log(req.body);
 
-  Place.find(function(err,data){
+    // pull out the information from the req.body
+    locationName = req.body.locationName;
+    foursquareId = req.body.foursquareId;
+    locationAddress = req.body.locationAddress;
+    latitude = req.body.latitude;
+    longitude = req.body.longitude;
+    locationType = req.body.locationType;
+    locationImage = req.body.locationImage;
+
+    // hold all this data in an object
+    // this object should be structured the same way as your db model
+    var pinObj = {
+        locationName: locationName,
+        foursquareId: foursquareId,
+        locationAddress: locationAddress,
+        longitude: longitude,
+        latitude: latitude,
+        locationType: locationType,
+        locationImage: locationImage
+    };
+
+    console.log(pinObj);
+
+
+    // now, let's save it to the database
+    // create a new animal model instance, passing in the object we've created
+    var pin = new Pin(pinObj);
+
+    pin.save(function(err,data){
+        // if err saving, respond back with error
+        if (err){
+          var error = {status:'ERROR', message: 'Error saving pin'};
+          return res.json(error);
+        }
+
+        console.log('saved a new pin!');
+        console.log(data);
+
+        // now return the json data of the new animal
+        var jsonData = {
+          status: 'OK',
+          pin: data
+        }
+
+        return res.json(jsonData);
+
+    }) 
+})
+
+router.get('/api/get/allpins', function(req,res){
+
+  Pin.find(function(err,data){
 
       if(err){
         var error = {
@@ -134,7 +122,7 @@ router.get('/api/get/places', function(req,res){
 
       var jsonData = {
         status: "OK",
-        places: data
+        pins: data
       }
 
       return res.json(jsonData);
@@ -143,13 +131,11 @@ router.get('/api/get/places', function(req,res){
 
 })
 
-router.get('/api/get/places/:slug', function(req,res){
+router.get('/api/get/pinlocation/:id', function(req,res){
 
-  var requestedName = req.params.slug;
-  //console.log(requestedName);
+  var venueId = req.params.id;
 
-
-  Place.find({userId:requestedName},function(err,data){
+  Pin.findById(venueId,function(err,data){
 
       if(err){
         var error = {
@@ -161,7 +147,7 @@ router.get('/api/get/places/:slug', function(req,res){
 
       var jsonData = {
         status: "OK",
-        places: data
+        pins: data
       }
 
       return res.json(jsonData);
@@ -169,54 +155,6 @@ router.get('/api/get/places/:slug', function(req,res){
   })
 
 })
-
-router.get('/api/get/people', function(req,res){
-
-  Person.find(function(err,data){
-
-      if(err){
-        var error = {
-          status: "ERROR",
-          message: err
-        }
-        return res.json(err)
-      }
-
-      var jsonData = {
-        status: "OK",
-        people: data
-      }
-
-      return res.json(jsonData);
-
-  })
-
-})
-
-
-router.get('/api/delete/person/:slug', function(req,res){
-  var requestedName = req.params.slug;
-
-  // let's remove the document where name is "Sam Slover"
-  Person.findOneAndRemove({slug:requestedName},function(err, data){
-    // err
-    if(err) console.log('we have error -> ' + err);
-
-    // let's log out all the updated data
-    var jsonData = {
-      status: "Deleted "+requestedName
-    }
-    console.log(jsonData);
-    res.redirect('/people');
-  })
-  
-})
-
-
-
-
-
-
 
 
 module.exports = router;

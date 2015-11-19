@@ -87,7 +87,7 @@ body {
 #logoContainer img {
 	margin-top: 25px;
 	margin-left: 35px;
-	margin-bottom: 60px;
+	margin-bottom: 0px;
 	height: 50px;
 	width: 50px;
 }
@@ -114,6 +114,7 @@ body {
 	-webkit-box-sizing:border-box; 
 	-moz-box-sizing:border-box; 
 	box-sizing:border-box;
+	cursor: pointer;
 }
 
 #addButton h2 {
@@ -172,7 +173,7 @@ input[type=checkbox] {
 }
 
 #restaurantCheckbox input[type=checkbox] + label {
-	background: url("http://s28.postimg.org/tce43lma1/restpin.png") no-repeat;
+	background: url("http://s18.postimg.org/6hw9hf1o5/shoppin.png") no-repeat;
 	background-size: 100%;
 	height: 43px;
 	width: 30px;
@@ -189,7 +190,7 @@ input[type=checkbox] {
 }
 
 #shopCheckbox input[type=checkbox] + label {
-	background: url("http://s18.postimg.org/6hw9hf1o5/shoppin.png") no-repeat;
+	background: url("http://s28.postimg.org/tce43lma1/restpin.png") no-repeat;
 	background-size: 100%;
 	height: 43px;
 	width: 30px;
@@ -260,7 +261,7 @@ input[type=checkbox] {
 }
 
 #restaurantCheckbox input[type=checkbox]:checked + label {
-	background: url("http://s28.postimg.org/tce43lma1/restpin.png") no-repeat;
+	background: url("http://s18.postimg.org/6hw9hf1o5/shoppin.png") no-repeat;
 	background-size: 100%;
 	height: 43px;
 	width: 30px;
@@ -275,7 +276,7 @@ input[type=checkbox] {
 }
 
 #shopCheckbox input[type=checkbox]:checked + label {
-	background: url("http://s18.postimg.org/6hw9hf1o5/shoppin.png") no-repeat;
+	background: url("http://s28.postimg.org/tce43lma1/restpin.png") no-repeat;
 	background-size: 100%;
 	height: 43px;
 	width: 30px;
@@ -450,4 +451,125 @@ input[type=range]::-ms-fill-upper {
 input[type=range]:focus::-ms-fill-upper {
   box-shadow: inset 0px 0px 3px rgba(30,30,30,.9);
   background: #fff;
+}
+
+/*hide mapbox tooltips*/
+.leaflet-popup-content-wrapper {
+	display: none;
+  }
+.leaflet-popup-content-wrapper a {
+	display: none;
+  }
+.leaflet-popup-tip-container {
+	display: none;
+  }
+.leaflet-popup-tip {
+	display: none;
+  }
+
+.leaflet-popup-close-button{
+	display: none;
+}
+
+#moreInfo {
+	width: 350px;
+	height: 100%;
+	left: -351px;
+	top: 0px;
+	z-index: 30;
+	position: absolute;
+	border-right: solid 1px #999; 
+/*	box-shadow: 3px 0px 5px rgba(70,70,70,0.60);*/
+	-webkit-box-sizing:border-box; 
+	-moz-box-sizing:border-box; 
+	box-sizing:border-box;
+
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+1,eaeaea+100,7db9e8+100 */
+	background: #ffffff; /* Old browsers */
+	background: -moz-linear-gradient(-45deg, #ffffff 1%, #eaeaea 100%, #7db9e8 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right bottom, color-stop(1%,#ffffff), color-stop(100%,#eaeaea), color-stop(100%,#7db9e8)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(-45deg, #ffffff 1%,#eaeaea 100%,#7db9e8 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(-45deg, #ffffff 1%,#eaeaea 100%,#7db9e8 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(-45deg, #ffffff 1%,#eaeaea 100%,#7db9e8 100%); /* IE10+ */
+	background: linear-gradient(135deg, #ffffff 1%,#eaeaea 100%,#7db9e8 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#7db9e8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.infoClose {
+	width: 60px;
+	height: 60px;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	overflow: hidden;
+	border: none;
+	background: url(../img/cancelinfo.png) no-repeat center center;
+	text-indent: 200%;
+	color: transparent;
+	outline: none;
+	z-index: 400;
+	cursor: pointer;
+	-webkit-animation:spin 3.5s linear infinite;
+    -moz-animation:spin 3.5s linear infinite;
+    animation:spin 3.5s linear infinite;
+}
+
+.infoClose:hover {
+	-webkit-animation:spin none;
+    -moz-animation:spin none;
+    animation:spin none;
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(-360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(-360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(-360deg); transform:rotate(-360deg); } }
+
+#imageContainer {
+	width: 350px;
+	height: 200px;
+	overflow: hidden;
+}
+
+#imageContainer img {
+	width: 350px;
+	height: 350px;
+}
+
+#placeInfo {
+	width: 290px;
+	margin: 30px auto 0px auto;
+}
+
+#placeInfo h2 {
+	margin-bottom: 12px;
+	font-family: OpenLight;
+	color: #333;
+	font-size: 3em;
+}
+
+#placeInfo p {
+	margin-bottom: 10px;
+	font-family: OpenLight;
+	color: #555;
+	font-size: 1.7em;
+	letter-spacing: .3px;
+}
+
+#placeInfo p:first-letter {
+	text-transform: uppercase;
+}
+
+#infoTile {
+	width: 100%;
+	height: 100px;
+	margin-top: 30px;
+	margin-bottom: 10px;
+	background-color: #fff;
+	border: 1px solid rgba(230,230,230,1);
+	-webkit-box-sizing:border-box; 
+	-moz-box-sizing:border-box; 
+	box-sizing:border-box;
+	box-shadow: 0px 1px 2px rgba(150,150,150,0.80);
+	cursor: pointer;
+
 }
